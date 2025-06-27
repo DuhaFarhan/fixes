@@ -40,11 +40,14 @@ function TournamentDashboard() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPlayer, setEditingPlayer] = useState(null);
+  const [editingPlayer, setEditingPlayer] = useState(null);
   const [isListModalOpen, setIsListModalOpen] = useState(false);
   const [isRandomizeConfirmOpen, setIsRandomizeConfirmOpen] = useState(false);
   const [isSortByRatingConfirmOpen, setIsSortByRatingConfirmOpen] = useState(false);
   const [isForbiddenModalOpen, setIsForbiddenModalOpen] = useState(false);
   const [isPredefinedModalOpen, setIsPredefinedModalOpen] = useState(false);
+  const [isCheckinModalOpen, setIsCheckinModalOpen] = useState(false);
+  const [isCheckinMode, setIsCheckinMode] = useState(false);
   const [isCheckinModalOpen, setIsCheckinModalOpen] = useState(false);
   const [isCheckinMode, setIsCheckinMode] = useState(false);
 
@@ -209,7 +212,15 @@ const generateMatches = (activePlayers) => {
   };
 
   const confirmedPlayers = players.filter(p => p.checkedIn !== false);
+  const confirmedPlayers = players.filter(p => p.checkedIn !== false);
   const showToggleButton = location.pathname !== '/' && username;
+
+  const getNextPlayerId = () => {
+    const key = `tournament-${id}-nextId`;
+    const current = parseInt(localStorage.getItem(key)) || 1;
+    localStorage.setItem(key, current + 1);
+    return current;
+  };
 
   const getNextPlayerId = () => {
     const key = `tournament-${id}-nextId`;
@@ -241,11 +252,15 @@ const generateMatches = (activePlayers) => {
               <div className="row">
                 <button className="btn btn-gold" onClick={() => { setIsModalOpen(true); setEditingPlayer(null); }}>
                   <img src={addIcon} alt="" className="btn-icon" /> إنشاء لاعب جديد
+                <button className="btn btn-gold" onClick={() => { setIsModalOpen(true); setEditingPlayer(null); }}>
+                  <img src={addIcon} alt="" className="btn-icon" /> إنشاء لاعب جديد
                 </button>
                 <button className="btn btn-outline" onClick={() => setIsListModalOpen(true)}>
                   <img src={listIcon} alt="" className="btn-icon" /> إنشاء لاعبين من القائمة
+                  <img src={listIcon} alt="" className="btn-icon" /> إنشاء لاعبين من القائمة
                 </button>
                 <button className="btn btn-outline" onClick={() => setIsRandomizeConfirmOpen(true)}>
+                  <img src={shuffleIcon} alt="" className="btn-icon" /> ترتيب عشوائي
                   <img src={shuffleIcon} alt="" className="btn-icon" /> ترتيب عشوائي
                 </button>
               </div>
@@ -253,11 +268,14 @@ const generateMatches = (activePlayers) => {
               <div className="row">
                 <button className="btn btn-outline" onClick={() => setIsSortByRatingConfirmOpen(true)}>
                   <img src={ratingIcon} alt="" className="btn-icon" /> ترتيب حسب التصنيف
+                  <img src={ratingIcon} alt="" className="btn-icon" /> ترتيب حسب التصنيف
                 </button>
                 <button className="btn btn-outline" onClick={() => setIsForbiddenModalOpen(true)}>
                   <img src={blockIcon} alt="" className="btn-icon" /> الأزواج الممنوعة
+                  <img src={blockIcon} alt="" className="btn-icon" /> الأزواج الممنوعة
                 </button>
                 <button className="btn btn-outline" onClick={() => setIsPredefinedModalOpen(true)}>
+                  <img src={pairIcon} alt="" className="btn-icon" /> الأزواج المحددة مسبقًا
                   <img src={pairIcon} alt="" className="btn-icon" /> الأزواج المحددة مسبقًا
                 </button>
               </div>
@@ -319,6 +337,7 @@ const generateMatches = (activePlayers) => {
                   {players.length === 0 ? (
                     <tr>
                       <td colSpan="9" style={{ textAlign: 'center', padding: '2rem', color: '#ccc' }}>
+                      <td colSpan="9" style={{ textAlign: 'center', padding: '2rem', color: '#ccc' }}>
                         لا توجد بيانات
                       </td>
                     </tr>
@@ -335,6 +354,17 @@ filteredPlayers.map((player, index) => (                      <tr key={player.id
                         )}
                         <td>{index + 1}</td>
                         <td>{player.id}</td>
+                        <td>
+                          <span
+                            className={`editable-name ${isCheckinMode && player.checkedIn === false ? 'crossed-name' : ''}`}
+                            onClick={() => {
+                              setEditingPlayer(player);
+                              setIsModalOpen(true);
+                            }}
+                          >
+                            {player.name}
+                          </span>
+                        </td>
                         <td>
                           <span
                             className={`editable-name ${isCheckinMode && player.checkedIn === false ? 'crossed-name' : ''}`}
@@ -375,6 +405,11 @@ filteredPlayers.map((player, index) => (                      <tr key={player.id
                   ✅ تم تأكيد {confirmedPlayers.length} / {players.length}
                 </span>
               )}
+              {isCheckinMode && (
+                <span className="checkin-count">
+                  ✅ تم تأكيد {confirmedPlayers.length} / {players.length}
+                </span>
+              )}
             </div>
           </>
         )}
@@ -396,9 +431,12 @@ filteredPlayers.map((player, index) => (                      <tr key={player.id
       <CreatePlayerModal
         isOpen={isModalOpen}
         onClose={() => { setIsModalOpen(false); setEditingPlayer(null); }}
+        onClose={() => { setIsModalOpen(false); setEditingPlayer(null); }}
         onCreate={handleCreatePlayer}
         existingPlayer={editingPlayer}
+        existingPlayer={editingPlayer}
       />
+
 
       <CreatePlayersByListModal
         isOpen={isListModalOpen}
