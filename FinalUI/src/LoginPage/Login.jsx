@@ -5,12 +5,10 @@ import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-// استيراد الأيقونات البنفسجية الجديدة
 import rook from '../assets/LoginIcons/rook.png';
 import king from '../assets/LoginIcons/king.png';
 import bishop from '../assets/LoginIcons/bishop.png';
 import queen from '../assets/LoginIcons/queen.png';
-// إذا كان عندك pawn/knight أضيفيهم هنا بنفس الطريقة
 import logo from '../assets/logoshah.png';
 
 function Login() {
@@ -59,65 +57,72 @@ function Login() {
   };
 
   return (
-      <div className="login-wrapper">
-        <div className="login-container">
-          {/* الهيدر مع اللوجو */}
-          <div className="login-header">
-            <img src={logo} alt="شطرنج القدس" className="login-logo" />
-            <h2>تسجيل الدخول</h2>
-          </div>
-
-          <form onSubmit={handleLogin}>
-            <div className="input-group">
-              <input
-                type="text"
-                id="username"
-                placeholder="webguild"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                onFocus={() => setIsUserFocused(true)}
-                onBlur={() => setIsUserFocused(username.length > 0)}
-              />
-              <label htmlFor="username" className={isUserFocused || username ? "label-active" : ""}>
-                اسم المستخدم
-              </label>
-            </div>
-
-            <div className="input-group password-container">
-              <input
-                type={passwordVisible ? "text" : "password"}
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setIsPassFocused(true)}
-                onBlur={() => setIsPassFocused(password.length > 0)}
-              />
-              <label htmlFor="password" className={isPassFocused || password ? "label-active" : ""}>
-                كلمة المرور
-              </label>
-              <FontAwesomeIcon
-                icon={passwordVisible ? faEye : faEyeSlash}
-                className="eye-icon"
-                onClick={togglePasswordVisibility}
-              />
-            </div>
-
-            <button type="submit" className="login-btn">الدخول</button>
-          </form>
-
-          {/* شريط زخرفة الأيقونات البنفسجية */}
-          <div className="chess-icons-bar">
-            <div className="chess-icon-circle"><img src={rook} alt="قلعة" /></div>
-            <div className="chess-icon-circle"><img src={bishop} alt="فيل" /></div>
-            <div className="chess-icon-circle"><img src={queen} alt="وزير" /></div>
-            <div className="chess-icon-circle"><img src={king} alt="ملك" /></div>
-            {/* إذا عندك بيدق أو حصان أضيفيهم هنا */}
-          </div>
-
-          {message && <p>{message}</p>}
+    <div className="login-wrapper">
+      <div className="login-container">
+        {/* Header */}
+        <div className="login-header">
+          <img src={logo} alt="شطرنج القدس" className="login-logo" />
+          <h2>تسجيل الدخول</h2>
         </div>
+
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <input
+              type="text"
+              id="username"
+              placeholder="webguild"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              onFocus={() => setIsUserFocused(true)}
+              onBlur={() => setIsUserFocused(username.length > 0)}
+            />
+            <label htmlFor="username" className={isUserFocused || username ? "label-active" : ""}>
+              اسم المستخدم
+            </label>
+          </div>
+
+          <div className="input-group password-container">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onFocus={() => setIsPassFocused(true)}
+              onBlur={() => setIsPassFocused(password.length > 0)}
+            />
+            <label htmlFor="password" className={isPassFocused || password ? "label-active" : ""}>
+              كلمة المرور
+            </label>
+            <FontAwesomeIcon
+              icon={passwordVisible ? faEye : faEyeSlash}
+              className="eye-icon"
+              onClick={togglePasswordVisibility}
+            />
+          </div>
+
+          <button type="submit" className="login-btn">الدخول</button>
+
+          {/* ✅ الزر الصغير الجديد */}
+          <button
+            type="button"
+            className="mini-link-button"
+            onClick={() => navigate('/')}
+          >
+            الصفحة الرئيسية
+          </button>
+        </form>
+
+        {/* شريط الأيقونات */}
+        <div className="chess-icons-bar">
+          <div className="chess-icon-circle"><img src={rook} alt="قلعة" /></div>
+          <div className="chess-icon-circle"><img src={bishop} alt="فيل" /></div>
+          <div className="chess-icon-circle"><img src={queen} alt="وزير" /></div>
+          <div className="chess-icon-circle"><img src={king} alt="ملك" /></div>
+        </div>
+
+        {message && <p>{message}</p>}
       </div>
- 
+    </div>
   );
 }
 

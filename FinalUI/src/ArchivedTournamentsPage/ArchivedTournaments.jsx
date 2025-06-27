@@ -53,7 +53,7 @@ function ArchivedTournaments() {
           {archivedTournaments.length === 0 ? (
             <p className="no-archived">🚧 لا توجد بطولات مؤرشفة بعد</p>
           ) : (
-            <div className="my-tournaments-table-wrapper">
+            <div className="table-wrapper">
               <table className="table-theme">
                 <thead>
                   <tr>

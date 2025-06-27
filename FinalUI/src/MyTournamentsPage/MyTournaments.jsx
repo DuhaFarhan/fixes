@@ -54,7 +54,7 @@ function MyTournaments() {
             </div>
           </div>
 
-          <div className="my-tournaments-table-wrapper">
+          <div className="table-wrapper">
             <table className="table-theme">
               <thead>
                 <tr>

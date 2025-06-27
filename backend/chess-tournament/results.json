@@ -1,0 +1,17 @@
+[ {
+  "white" : "BenBen",
+  "black" : "TomTomas",
+  "result" : "1"
+}, {
+  "white" : "AleAlex",
+  "black" : "MarMaria",
+  "result" : "1"
+}, {
+  "white" : "EliEli",
+  "black" : "SanSantos",
+  "result" : "="
+}, {
+  "white" : "JohJohn",
+  "black" : "LuiLuis",
+  "result" : "1"
+} ]

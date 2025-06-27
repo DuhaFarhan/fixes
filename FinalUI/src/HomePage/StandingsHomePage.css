@@ -8,7 +8,7 @@
 }
 
 /* 🔍 حقل البحث */
-.standings-search-wrapper {
+.search-wrapper {
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -58,16 +58,6 @@
   text-align: center;
 }
 
-/* 📋 حاوية الجدول */
-.standings-table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  max-width: 100%;
-  border-radius: 16px;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
 
 /* 📱 استجابة الهواتف */
 @media (max-width: 768px) {
@@ -84,7 +74,4 @@
     font-size: 1rem;
   }
 
-  .table-theme {
-    font-size: 0.85rem;
-  }
 }

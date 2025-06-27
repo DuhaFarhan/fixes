@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../TournamentDashboard.css";
-import "./StandingsButton.css";
 import { FaSearch } from "react-icons/fa";
+import ModalWrapper from "../../../Components/TheModals/ModalWrapper";
 
 function StandingsButton({ players, rounds }) {
   const [rankingData, setRankingData] = useState([]);
@@ -47,7 +47,7 @@ function StandingsButton({ players, rounds }) {
     if (rankingData.length === 0) return;
     let csv = "الترتيب,الاسم,النقاط,التصنيف,التصنيف الجديد,DE,Buc1,BucT\n";
     rankingData.forEach((row) => {
-      csv += `${row.pos},${row.name},${row.points},${row.rating},${row.newRating},${row.de},${row.buc1},${row.bucT}\n`;
+      csv += `${row.pos},${row.name},${row.points.toFixed(1)},${row.rating},${row.newRating},${row.de},${row.buc1},${row.bucT}\n`;
     });
     const link = document.createElement("a");
     link.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
@@ -57,19 +57,19 @@ function StandingsButton({ players, rounds }) {
 
   return (
     <div className="standings-page">
-      <div className="standings-title">الترتيب</div>
-      <div className="standings-search-wrapper">
+      <div className="form-title">الترتيب</div>
+      <div className="search-wrapper">
         <input
           type="text"
-          className="standings-search-input"
+          className="search-input"
           placeholder="ابحث عن لاعب..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <FaSearch className="standings-search-icon" />
+        <FaSearch className="search-icon" />
       </div>
 
-      <div className="standings-table-wrapper">
+      <div className="table-wrapper">
         <table className="table-theme">
           <thead>
             <tr>
@@ -95,7 +95,7 @@ function StandingsButton({ players, rounds }) {
                 <tr key={idx}>
                   <td>{row.pos}</td>
                   <td>{row.name}</td>
-                  <td>{row.points}</td>
+                  <td>{row.points.toFixed(1)}</td>
                   <td>{row.rating}</td>
                   <td>{row.newRating}</td>
                   <td>{row.de}</td>
@@ -114,9 +114,8 @@ function StandingsButton({ players, rounds }) {
       </div>
 
       {showZoom && (
-        <div className="modal-overlay" onClick={() => setShowZoom(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2 className="zoom-title">الترتيب الكامل</h2>
+        <ModalWrapper isOpen={showZoom} onClose={() => setShowZoom(false)} title="الترتيب الكامل">
+          <div className="table-wrapper">
             <table className="table-theme">
               <thead>
                 <tr>
@@ -135,7 +134,7 @@ function StandingsButton({ players, rounds }) {
                   <tr key={idx}>
                     <td>{row.pos}</td>
                     <td>{row.name}</td>
-                    <td>{row.points}</td>
+                    <td>{row.points.toFixed(1)}</td>
                     <td>{row.rating}</td>
                     <td>{row.newRating}</td>
                     <td>{row.de}</td>
@@ -145,12 +144,15 @@ function StandingsButton({ players, rounds }) {
                 ))}
               </tbody>
             </table>
-            <div className="centered-close-btn">
-              <button className="close-btn" onClick={() => setShowZoom(false)}>✖ إغلاق</button>
-            </div>
-          </div>
-        </div>
+               </div>
+
+        <div className="modal-actions">
+  <button className="btn btn-outline" onClick={() => setShowZoom(false)}>إغلاق</button>            </div>
+          
+  </ModalWrapper>
+
       )}
+      
     </div>
   );
 }

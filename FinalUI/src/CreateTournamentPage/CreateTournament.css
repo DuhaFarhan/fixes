@@ -166,15 +166,4 @@ input[type="number"] {
   .form-title {
     font-size: 1.4rem;
   }
-
-
-/* ✅ زر عام (موجود بالفعل غالبًا في index.css) */
-.btn {
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.25s ease-in-out;
-}
 }

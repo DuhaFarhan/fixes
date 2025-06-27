@@ -16,13 +16,13 @@
 
 /* Round title styling */
 .round-title {
-    color: var(--clr-deep-purple); /* لون العنوان يتناسب مع الخلفية الفاتحة */
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 0 auto;
-    flex: 1;
-    
+  font-size: 32px;
+  font-weight: bold;
+  color: #4a1d99;
+  text-align: center;
+  margin-bottom: 16px; /* قلل القيمة إذا كانت 40 أو أكثر */
 }
+
 
 /* Top section controls (Generate button, scroll arrows) */
 .top-controls {
@@ -379,20 +379,6 @@
 }
 
 
-/* Responsive Table for Rounds Page */
-@media (max-width: 950px) {
-    .round-table {
-        font-size: 0.9rem;
-        border-radius: 12px;
-        width: 98%;
-    }
-
-    .round-table th,
-    .round-table td {
-        font-size: 0.95rem;
-        padding: 0.65rem 0.3rem;
-    }
-}
 
 @media (max-width: 600px) {
     .round-table {
@@ -510,3 +496,12 @@
   pointer-events: none;
   opacity: 0.6;
 }
+
+.rounds-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px; /* مسافة بين الأزرار */
+}
+
+

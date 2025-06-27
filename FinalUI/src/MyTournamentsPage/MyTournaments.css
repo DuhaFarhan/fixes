@@ -21,14 +21,7 @@
   flex-wrap: wrap;
 }
 
-.my-tournaments-table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  max-width: 100%;
-  border-radius: 16px;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
+
 
 .tournament-name-link {
   color: var(--clr-purple);
@@ -102,4 +95,21 @@
   .archive-icon-btn {
     font-size: 1.1rem; /* أصغر على الموبايل */
   }
+}
+.mini-link-button {
+  all: unset;
+  color: #4b0082;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  margin: 12px auto 0 auto;
+  display: block;
+  cursor: pointer;
+  font-weight: normal;
+  text-align: center;
+}
+
+.mini-link-button:hover {
+  font-weight: bold;
+  color: #4b0082; /* لا يتغير اللون */
+  background: transparent; /* لا خلفية */
 }

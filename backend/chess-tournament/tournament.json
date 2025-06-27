@@ -1,0 +1,56 @@
+{
+  "tournamentName": "test",
+  "city": "Jerusalem",
+  "country": "ISR",
+  "startDate": "2025-06-11",
+  "endDate": "2025-06-11",
+  "numPlayers": 8,
+  "type": "Individual Swiss Dutch",
+  "arbiter": {
+    "name": "hiba",
+    "fideId": "22232540"
+  },
+  "rounds": 7,
+  "players": [
+    {
+     "name": "Tomas",
+      "fideId": "13400304",
+      "birthYear": 1978
+    },
+    {
+      "name": "Alex",
+      "fideId": "2212072",
+      "birthYear": 1981
+    },
+    {
+       "name": "Santos",
+      "fideId": "6400353",
+      "birthYear": 1981
+    },
+    {
+      "name": "John",
+      "fideId": "32004478",
+      "birthYear": 1972
+    },
+    {
+    "name": "Ben",
+      "fideId": "22227687",
+      "birthYear": 1955
+    },
+    {
+     "name": "Maria",
+      "fideId": "2278987",
+      "birthYear": 1963
+    },
+    {
+      "name": "Eli",
+      "fideId": "2291975",
+      "birthYear": 1978
+    },
+    {
+      "name": "Luis",
+      "fideId": "32039387",
+      "birthYear": 1974
+    }
+  ]
+}

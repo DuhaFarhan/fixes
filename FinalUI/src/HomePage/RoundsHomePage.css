@@ -28,12 +28,5 @@
     font-size: 6vw;
     color: #663d99;
   }
- .rounds-table{
-      width: 100%;
-    table-layout: fixed;
-  }
-
-  .table-theme {
-    font-size: 0.85rem;
-  }
+ 
 }
