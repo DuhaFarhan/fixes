@@ -265,3 +265,23 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 .chess-icon-circle:hover img {
   filter: drop-shadow(0 0 17px #f0c230cc) drop-shadow(0 0 10px #663d99cc);
 }
+
+.mini-link-button {
+  all: unset;
+  color: #4b0082;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  margin: 12px auto 0 auto;
+  display: block;
+  cursor: pointer;
+  font-weight: normal;
+  text-align: center;
+}
+
+.mini-link-button:hover {
+  font-weight: bold;
+  color: #4b0082; /* لا يتغير اللون */
+  background: transparent; /* لا خلفية */
+}
+
+

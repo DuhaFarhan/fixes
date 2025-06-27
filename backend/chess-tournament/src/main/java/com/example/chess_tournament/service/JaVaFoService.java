@@ -17,13 +17,13 @@ public class JaVaFoService {
     private TournamentRepository tournamentRepository;
 
     private static final Map<String, String> TIEBREAKER_MAP = Map.of(
-            "DirectEncounter", "1",
+            "Direct Encounter", "1",
             "Buchholz", "2",
-            "BuchholzCut1", "3",
-            "BuchholzCut2", "4",
+            "Buchholz Cut 1", "3",
+            "Buchholz Cut 2", "4",
             "Berger", "5",
             "Cumulative", "6",
-            "CumulativeOpponent", "7");
+            "Cumulative Opponent", "7");
 
     private static final String DEFAULT_TIEBREAKERS = "1,3,2"; // DirectEncounter, BuchholzCut1, Buchholz
 

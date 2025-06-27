@@ -8,9 +8,11 @@ import Login from './LoginPage/Login';
 import MyTournaments from './MyTournamentsPage/MyTournaments';
 import CreateTournament from './CreateTournamentPage/CreateTournament';
 import TournamentDashboard from './DashBoardPage/TournamentDashboard';
-
-// ✅ أضفنا هذا السطر لإستيراد صفحة الأرشيف
 import ArchivedTournaments from './ArchivedTournamentsPage/ArchivedTournaments';
+import ArbiterRounds from './DashBoardPage/ArbiterRounds'; // استيراد الصفحة الجديدة
+
+// ✅ صفحة الجولات الخاصة بالحكم (لوحة التحكم)
+import RoundsButton from './DashBoardPage/DashBoardButtons/RoundsPage/RoundsButton';
 
 const App = () => {
   const location = useLocation();
@@ -30,6 +32,11 @@ const App = () => {
 
       {/* ✅ صفحة البطولات المؤرشفة */}
       <Route path="/archive" element={<ArchivedTournaments />} />
+
+      {/* ✅ صفحة الجولات للحكم */}
+      <Route path="/rounds-dashboard" element={<RoundsButton />} />
+      <Route path="/arbiter-rounds" element={<ArbiterRounds />} />
+
     </Routes>
   );
 };

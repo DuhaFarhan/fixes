@@ -22,4 +22,7 @@ public class Arbiter {
     @Column(name = "fide_id")
     private long fideId;
 
+    @ManyToOne
+    @JoinColumn(name = "tournament_id")
+    private Tournament tournament;
 }

@@ -47,7 +47,7 @@ function StandingsButton({ players, rounds }) {
     if (rankingData.length === 0) return;
     let csv = "الترتيب,الاسم,النقاط,التصنيف,التصنيف الجديد,DE,Buc1,BucT\n";
     rankingData.forEach((row) => {
-      csv += `${row.pos},${row.name},${row.points},${row.rating},${row.newRating},${row.de},${row.buc1},${row.bucT}\n`;
+      csv += `${row.pos},${row.name},${row.points.toFixed(1)},${row.rating},${row.newRating},${row.de},${row.buc1},${row.bucT}\n`;
     });
     const link = document.createElement("a");
     link.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
@@ -95,7 +95,7 @@ function StandingsButton({ players, rounds }) {
                 <tr key={idx}>
                   <td>{row.pos}</td>
                   <td>{row.name}</td>
-                  <td>{row.points}</td>
+                  <td>{row.points.toFixed(1)}</td>
                   <td>{row.rating}</td>
                   <td>{row.newRating}</td>
                   <td>{row.de}</td>
@@ -135,7 +135,7 @@ function StandingsButton({ players, rounds }) {
                   <tr key={idx}>
                     <td>{row.pos}</td>
                     <td>{row.name}</td>
-                    <td>{row.points}</td>
+                    <td>{row.points.toFixed(1)}</td>
                     <td>{row.rating}</td>
                     <td>{row.newRating}</td>
                     <td>{row.de}</td>

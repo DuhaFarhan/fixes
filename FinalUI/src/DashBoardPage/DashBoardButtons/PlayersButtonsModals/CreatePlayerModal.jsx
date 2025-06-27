@@ -8,6 +8,7 @@ function CreatePlayerModal({ isOpen, onClose, onCreate }) {
   const [kFactor, setKFactor] = useState(0);
   const [extraPoints, setExtraPoints] = useState(0);
   const [disabled, setDisabled] = useState(false);
+  const [isCheckedIn, setIsCheckedIn] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
