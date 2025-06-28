@@ -70,7 +70,7 @@ function CreateTournament({ mode = 'create', initialData = null, embedded = fals
   const handleSubmit = async  (e) => {
     e.preventDefault();
     try {
-    const response = await fetch('http://localhost:8081/api/tournaments', {
+    const response = await fetch('http://localhost:8080/api/tournaments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -162,6 +162,7 @@ function CreateTournament({ mode = 'create', initialData = null, embedded = fals
           { label: 'الرقم الدولي للمنظّم', name: 'arbiterFideId', type: 'bigint' },
           {
             label: 'نظام اللعب', name: 'playSystem', type: 'select', options: [
+              { value: '', label: 'اختر نظام اللعب', disabled: true, hidden: true },
               { value: 'swiss', label: 'Swiss Dutch FIDE (JaVaFo)' },
               { value: 'round-robin', label: 'Round Robin' },//////
               { value: 'knockout', label: 'Knock-Out' },/////
@@ -169,6 +170,7 @@ function CreateTournament({ mode = 'create', initialData = null, embedded = fals
           },
           {
             label: 'نقاط كل مباراة', name: 'points', type: 'select', options: [
+              { value: '', label: 'اختر النقاط', disabled: true, hidden: true },
               { value: 'standard', label: '1-0, 0-1, 0.5-0.5' },
               { value: 'winOnly', label: '1-0, 0-1' },
               { value: 'Arbitrary', label: 'Arbitrary' },

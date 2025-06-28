@@ -24,54 +24,37 @@ function Login() {
     setPasswordVisible(!passwordVisible);
   };
 
- const handleLogin = async (e) => {
-  e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  if (!username && !password) {
-    setMessage('أدخل اسم المستخدم وكلمة المرور');
-    return;
-  }
-  if (!username) {
-    setMessage('أدخل اسم المستخدم');
-    return;
-  }
-  if (!password) {
-    setMessage('أدخل كلمة المرور');
-    return;
-  }
-
-  try {
-    const response = await axios.post('/api/auth/login', {
-      username,
-      password
-    });
-
-    console.log('Login response:', response.data);
-
-
-    const { role } = response.data;
-
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('username', username);
-    localStorage.setItem('userRole', role);
-
-    setMessage('');
-
-    // ✅ التوجيه حسب الدور
-    if (role === 'arbiter') {
-      navigate('/arbiter-rounds');
-    } else if (role === 'ORGANIZER') {
-      navigate('/mytournaments');
-    } else {
-      navigate('/arbiter-rounds');
+    if (!username && !password) {
+      setMessage('أدخل اسم المستخدم وكلمة المرور');
+      return;
+    }
+    if (!username) {
+      setMessage('أدخل اسم المستخدم');
+      return;
+    }
+    if (!password) {
+      setMessage('أدخل كلمة المرور');
+      return;
     }
 
-  } catch (error) {
-    setMessage('فشل تسجيل الدخول، تأكد من البيانات');
-    console.error('Login error:', error.response?.data || error.message);
-  }
-};
+    try {
+      // await axios.post('/api/auth/login', {
+      //   username,
+      //   password
+      // });
 
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('username', username);
+      setMessage('');
+      navigate('/mytournaments');
+    } catch (error) {
+      setMessage('فشل تسجيل الدخول، تأكد من البيانات');
+      console.error('Login error:', error.response?.data || error.message);
+    }
+  };
 
   return (
     <div className="login-wrapper">
@@ -119,10 +102,7 @@ function Login() {
 
           <button type="submit" className="login-btn">الدخول</button>
 
-<<<<<<< HEAD
           {/* ✅ الزر الصغير الجديد */}
-=======
->>>>>>> 712e443ae13f464c5f785901bb0f19c0223defe0
           <button
             type="button"
             className="mini-link-button"
@@ -132,10 +112,7 @@ function Login() {
           </button>
         </form>
 
-<<<<<<< HEAD
         {/* شريط الأيقونات */}
-=======
->>>>>>> 712e443ae13f464c5f785901bb0f19c0223defe0
         <div className="chess-icons-bar">
           <div className="chess-icon-circle"><img src={rook} alt="قلعة" /></div>
           <div className="chess-icon-circle"><img src={bishop} alt="فيل" /></div>
@@ -143,11 +120,7 @@ function Login() {
           <div className="chess-icon-circle"><img src={king} alt="ملك" /></div>
         </div>
 
-<<<<<<< HEAD
         {message && <p>{message}</p>}
-=======
-        {message && <p className="login-error">{message}</p>}
->>>>>>> 712e443ae13f464c5f785901bb0f19c0223defe0
       </div>
     </div>
   );

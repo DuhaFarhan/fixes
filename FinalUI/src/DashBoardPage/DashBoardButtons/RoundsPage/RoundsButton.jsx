@@ -32,12 +32,6 @@ const [isViolationModalOpen, setIsViolationModalOpen] = useState(false);
     { value: "0F-0F", label: "0F-0F" },
     { value: "1F-0", label: "0-1F" },
     { value: "0-1F", label: "1F-0" },
-    { value: "1-0", label: "0-1" },
-    { value: "0.5-0.5", label: "0.5-0.5" },
-    { value: "0-1", label: "1-0" },
-    { value: "0F-0F", label: "0F-0F" },
-    { value: "1F-0", label: "0-1F" },
-    { value: "0-1F", label: "1F-0" },
     { value: "حذف", label: " حذف النتيجة" },
   ];
 
@@ -335,25 +329,11 @@ const handleSetResult = (roundIdx, matchId, value) => {
             (rounds.length < maxRounds && !allResultsFilled(rounds[rounds.length - 1])) ||
             (rounds.length === maxRounds && (!allResultsFilled(rounds[rounds.length - 1]) || resultsSubmitted))
           }
-          className={`generate-btn ${rounds.length === maxRounds ? 'final-button' : ''}`}
-          onClick={() => {
-            if (rounds.length === maxRounds) {
-              handleSubmitResults();
-            } else {
-              handleGenerateRound();
-            }
-          }}
-          disabled={
-            (rounds.length < maxRounds && !allResultsFilled(rounds[rounds.length - 1])) ||
-            (rounds.length === maxRounds && (!allResultsFilled(rounds[rounds.length - 1]) || resultsSubmitted))
-          }
         >
-          {rounds.length === maxRounds ? "إنهاء" : "الجولة التالية"}
           {rounds.length === maxRounds ? "إنهاء" : "الجولة التالية"}
         </button>
 
         <div className="round-buttons-wrapper">
-          <button className="scroll-arrow" onClick={() => setCurrentRound(Math.max(1, currentRound - 1))}>
           <button className="scroll-arrow" onClick={() => setCurrentRound(Math.max(1, currentRound - 1))}>
             <LuChevronRight size={32} color="#663d99" />
           </button>
@@ -370,7 +350,6 @@ const handleSetResult = (roundIdx, matchId, value) => {
             ))}
           </div>
 
-          <button className="scroll-arrow" onClick={() => setCurrentRound(Math.min(rounds.length, currentRound + 1))}>
           <button className="scroll-arrow" onClick={() => setCurrentRound(Math.min(rounds.length, currentRound + 1))}>
             <LuChevronLeft size={32} color="#663d99" />
           </button>
